@@ -51,8 +51,15 @@ func main() {
 			continue
 		}
 		username, success := msg.Attributes.Get(stun.AttrUsername)
+
 		if success {
-			log.Printf("Received STUN message success from %s =====> msg: %s ", addr, username)
+			token := string(username.Value)
+			if len(c.Token) == 0 || token == c.Token {
+				log.Printf("Received STUN message success from %s =====> msg: %s ", addr, token)
+			} else {
+				log.Printf("STUN Authrize failed ! from %s =====> msg: %s ", addr, token)
+				continue
+			}
 		} else {
 			log.Printf("Received STUN message failed from %s", addr)
 			continue

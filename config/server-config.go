@@ -6,5 +6,6 @@ import (
 
 type ServerConfig struct {
 	entities.BaseConfig
-	Port int
+	Port  int
+	Token string
 }
