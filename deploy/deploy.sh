@@ -14,7 +14,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/local/bin/stun-server -port 3478
+ExecStart=/usr/local/bin/stun-server
 
 # 【核心设置】修改停止信号为 SIGKILL（即 kill -9）
 KillSignal=SIGKILL
