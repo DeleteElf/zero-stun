@@ -1,7 +1,8 @@
 systemctl disable stun-server.service
 systemctl stop stun-server.service
 
-mv stun-server /usr/local/bin/
+rm -f /usr/local/bin/stun-server
+cp stun-server /usr/local/bin/
 chmod +x /usr/local/bin/stun-server
 cp -n ../etc/server.yaml /usr/local/bin/
 
