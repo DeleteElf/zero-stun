@@ -1,8 +1,9 @@
-sudo systemctl disable stun-server.service
-sudo systemctl stop stun-server.service
+systemctl disable stun-server.service
+systemctl stop stun-server.service
 
-sudo mv stun-server /usr/local/bin/
-sudo chmod +x /usr/local/bin/stun-server
+mv stun-server /usr/local/bin/
+chmod +x /usr/local/bin/stun-server
+cp -n ../etc/server.yaml /usr/local/bin/
 
 cat > /etc/systemd/system/stun-server.service <<EOF
 [Unit]
@@ -35,8 +36,8 @@ WantedBy=multi-user.target
 EOF
 
 
-sudo systemctl daemon-reload
-sudo systemctl start stun-server
-sudo systemctl enable stun-server
+systemctl daemon-reload
+systemctl start stun-server
+systemctl enable stun-server
 
-sudo systemctl status stun-server
+systemctl status stun-server
