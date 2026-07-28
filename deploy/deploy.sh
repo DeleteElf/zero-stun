@@ -1,10 +1,10 @@
 systemctl disable stun-server.service
 systemctl stop stun-server.service
-
-rm -f /usr/local/bin/stun-server
-cp stun-server /usr/local/bin/
-chmod +x /usr/local/bin/stun-server
-cp -n ../etc/server.yaml /usr/local/bin/etc/
+DIR=/usr/local/bin
+rm -f ${DIR}/stun-server
+cp stun-server ${DIR}/
+chmod +x ${DIR}/stun-server
+cp -n ../etc/server.yaml ${DIR}/etc/
 
 cat > /etc/systemd/system/stun-server.service <<EOF
 [Unit]
@@ -14,8 +14,8 @@ After=network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/local/bin/stun-server
-
+ExecStart=${DIR}/stun-server
+WorkingDirectory=${DIR}/
 # 【核心设置】修改停止信号为 SIGKILL（即 kill -9）
 KillSignal=SIGKILL
 # 【可选】确保强杀所有由该服务衍生出来的子进程
