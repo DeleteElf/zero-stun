@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/deleteelf/goframework/entities"
+	"github.com/DeleteElf/goframework/entities"
 )
 
 type ServerConfig struct {
