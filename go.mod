@@ -3,7 +3,6 @@ module zero-stun
 go 1.26.11
 
 require (
-	github.com/DeleteElf/zero-core v0.0.0-20261120084149-4ac942c06bfb
 	github.com/pion/stun/v3 v3.1.6
 	github.com/zeromicro/go-zero v1.10.3
 )
