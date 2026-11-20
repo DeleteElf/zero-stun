@@ -2,9 +2,6 @@ package main
 
 import (
 	"flag"
-	"github.com/DeleteElf/goframework/utils/loghelper"
-	"github.com/pion/stun/v3"
-	"github.com/zeromicro/go-zero/core/conf"
 	"log"
 	"net"
 	"os"
@@ -12,6 +9,9 @@ import (
 	"strconv"
 	"syscall"
 	"zero-stun/config"
+
+	"github.com/pion/stun/v3"
+	"github.com/zeromicro/go-zero/core/conf"
 )
 
 var configFile = flag.String("f", "etc/server.yaml", "the config file")
@@ -20,7 +20,6 @@ func main() {
 	flag.Parse()
 	var c config.ServerConfig
 	conf.MustLoad(*configFile, &c)
-	loghelper.GetLogManager().Init(loghelper.Debug)
 	listenIp := "0.0.0.0"
 	listener, err := net.ListenUDP("udp", &net.UDPAddr{IP: net.ParseIP(listenIp), Port: c.Port})
 	if err != nil {
